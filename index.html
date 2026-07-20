@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Md. Siddique Ahmed — Salesforce Development Engineer | IQVIA</title>
+<meta name="description" content="Md. Siddique Ahmed — Salesforce Development Engineer at IQVIA. 6.3+ years building enterprise healthcare CRM solutions on the Salesforce platform with Apex, LWC, Copado CI/CD, and release engineering." />
+<meta name="author" content="Md. Siddique Ahmed" />
+<meta name="keywords" content="Salesforce Development Engineer, Apex, LWC, Copado, IQVIA, Healthcare CRM, Release Engineering, Salesforce Development Engineer" />
+<meta property="og:title" content="Md. Siddique Ahmed — Salesforce Development Engineer" />
+<meta property="og:description" content="Salesforce Development Engineer at IQVIA. Enterprise CRM, Healthcare & Life Sciences, Production Support, Release Engineering." />
+<meta property="og:type" content="website" />
+<meta name="theme-color" content="#DBE4C6" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          brand: '#DBE4C6',
+          brandDark: '#a7c486',
+          bg: '#F8FAF7',
+          bg2: '#F2F6EC',
+          card: '#FFFFFF',
+          ink: '#111827',
+          sub: '#6B7280',
+          line: '#E5E7EB',
+          ok: '#34C759',
+          dark: '#0E1A14',
+          dark2: '#15281E',
+        },
+        fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+      }
+    }
+  }
+</script>
+
+<style>
+  :root{
+    --brand:#DBE4C6; --brandDark:#a7c486; --bg:#F8FAF7; --bg2:#F2F6EC; --card:#FFFFFF;
+    --ink:#111827; --sub:#6B7280; --line:#E5E7EB; --ok:#34C759;
+    --dark:#0E1A14; --dark2:#15281E;
+  }
+  *{ -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--bg); color:var(--ink); font-family:'Inter',sans-serif; overflow-x:hidden; }
+  ::selection{ background:var(--brand); color:var(--ink); }
+
+  #progress{ position:fixed; top:0; left:0; height:3px; width:0%; z-index:200;
+    background:linear-gradient(90deg,#DBE4C6,#a7c486); }
+
+  #cursorGlow{ position:fixed; width:420px; height:420px; border-radius:50%;
+    background:radial-gradient(circle, rgba(219,228,198,.5), rgba(219,228,198,0) 70%);
+    pointer-events:none; transform:translate(-50%,-50%); z-index:1; transition:opacity .3s; mix-blend-mode:multiply; }
+
+  .blob{ position:fixed; border-radius:50%; filter:blur(90px); opacity:.45; z-index:0; pointer-events:none; }
+  .blob1{ width:560px; height:560px; background:#DBE4C6; top:-140px; left:-140px; animation:float1 24s ease-in-out infinite; }
+  .blob2{ width:480px; height:480px; background:#c9dab0; bottom:-160px; right:-140px; animation:float2 28s ease-in-out infinite; }
+  .blob3{ width:400px; height:400px; background:#e7eed7; top:40%; left:55%; animation:float3 32s ease-in-out infinite; }
+  @keyframes float1{ 0%,100%{transform:translate(0,0)} 50%{transform:translate(90px,70px)} }
+  @keyframes float2{ 0%,100%{transform:translate(0,0)} 50%{transform:translate(-100px,-60px)} }
+  @keyframes float3{ 0%,100%{transform:translate(0,0)} 50%{transform:translate(-70px,50px)} }
+
+  .reveal{ opacity:0; transform:translateY(44px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); }
+  .reveal.in{ opacity:1; transform:none; }
+  .reveal-scale{ opacity:0; transform:scale(.93); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); }
+  .reveal-scale.in{ opacity:1; transform:none; }
+  .reveal-left{ opacity:0; transform:translateX(-54px); transition:all .9s cubic-bezier(.16,1,.3,1); }
+  .reveal-left.in{ opacity:1; transform:none; }
+  .reveal-right{ opacity:0; transform:translateX(54px); transition:all .9s cubic-bezier(.16,1,.3,1); }
+  .reveal-right.in{ opacity:1; transform:none; }
+
+  .lineUp{ display:block; overflow:hidden; }
+  .lineUp > span{ display:block; transform:translateY(110%); transition:transform 1s cubic-bezier(.16,1,.3,1); }
+  .lineUp.in > span{ transform:none; }
+
+  .glass{ background:rgba(255,255,255,.55); backdrop-filter:blur(18px) saturate(160%); -webkit-backdrop-filter:blur(18px) saturate(160%); border:1px solid rgba(229,231,235,.8); }
+  .glass-nav{ background:rgba(248,250,247,.72); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border-bottom:1px solid rgba(229,231,235,.7); }
+
+  /* Gradient text */
+  .grad-text{ background:linear-gradient(135deg,#0E1A14 0%, #2a4a36 55%, #a7c486 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .grad-dark{ background:linear-gradient(135deg,#0E1A14, #15281E); }
+
+  .skillCard{ position:relative; transition:transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s, border-color .5s; }
+  .skillCard:hover{ transform:translateY(-8px); box-shadow:0 24px 60px -20px rgba(219,228,198,.7); border-color:#a7c486; }
+
+  .btn{ transition:transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s, background .25s; }
+  .btn:hover{ transform:translateY(-2px); }
+
+  .tl-dot{ width:18px; height:18px; border-radius:50%; background:var(--brand); border:3px solid #fff; box-shadow:0 0 0 4px rgba(219,228,198,.5); }
+
+  .mapDot{ position:absolute; width:11px; height:11px; border-radius:50%; background:#a7c486; box-shadow:0 0 0 0 rgba(167,196,134,.6); animation:pulse 2.6s infinite; }
+  @keyframes pulse{ 0%{box-shadow:0 0 0 0 rgba(167,196,134,.6)} 70%{box-shadow:0 0 0 20px rgba(167,196,134,0)} 100%{box-shadow:0 0 0 0 rgba(167,196,134,0)} }
+
+  .float-card{ animation:floatY 6s ease-in-out infinite; }
+  @keyframes floatY{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+
+  .ring{ transform:rotate(-90deg); }
+  .ring .prog{ transition:stroke-dashoffset 1.6s cubic-bezier(.16,1,.3,1); }
+
+  .iconPop{ transition:transform .5s cubic-bezier(.16,1,.3,1); }
+  .skillCard:hover .iconPop{ transform:scale(1.15) rotate(-6deg); }
+
+  /* Cert card */
+  .certCard{ position:relative; transition:transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s, border-color .5s; overflow:hidden; }
+  .certCard:hover{ transform:translateY(-10px) scale(1.02); box-shadow:0 30px 70px -25px rgba(14,26,20,.35); border-color:#a7c486; }
+  .certCard::after{ content:""; position:absolute; inset:0; background:radial-gradient(120% 80% at 100% 0%, rgba(219,228,198,.5), transparent 60%); opacity:0; transition:opacity .5s; pointer-events:none; }
+  .certCard:hover::after{ opacity:1; }
+  .logoBadge{ transition:transform .5s cubic-bezier(.16,1,.3,1); }
+  .certCard:hover .logoBadge{ transform:scale(1.08) rotate(-3deg); }
+
+  @media (max-width:768px){ #cursorGlow{ display:none; } }
+  @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } }
+</style>
+</head>
+<body class="relative">
+
+<div id="progress"></div>
+<div id="cursorGlow"></div>
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
+
+<!-- NAVBAR -->
+<nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="#home" class="flex items-center gap-2 group">
+        <span class="w-9 h-9 rounded-xl grad-dark flex items-center justify-center text-brand font-bold text-sm shadow-sm">SA</span>
+        <span class="font-semibold tracking-tight text-ink">Siddique<span class="text-sub">.IQVIA</span></span>
+      </a>
+
+      <ul class="hidden lg:flex items-center gap-1 text-sm">
+        <li><a href="#home" class="navlink px-3 py-2 rounded-lg text-ink/80 hover:text-ink transition">Home</a></li>
+        <li><a href="#about" class="navlink px-3 py-2 rounded-lg text-ink/80 hover:text-ink transition">About</a></li>
+        <li><a href="#experience" class="navlink px-3 py-2 rounded-lg text-ink/80 hover:text-ink transition">Experience</a></li>
+        <li><a href="#projects" class="navlink px-3 py-2 rounded-lg text-ink/80 hover:text-ink transition">Projects</a></li>
+        <li><a href="#skills" class="navlink px-3 py-2 rounded-lg text-ink/80 hover:text-ink transition">Skills</a></li>
+        <li><a href="#awards" class="navlink px-3 py-2 rounded-lg text-ink/80 hover:text-ink transition">Achievements</a></li>
+        <li><a href="#certs" class="navlink px-3 py-2 rounded-lg text-ink/80 hover:text-ink transition">Certifications</a></li>
+        <!-- <li><a href="#contact" class="navlink px-3 py-2 rounded-lg text-ink/80 hover:text-ink transition">Contact</a></li> -->
+      </ul>
+
+      <div class="flex items-center gap-3">
+        <a href="resume/MD SIDDIQUE AHMED S_.pdf"
+   download="MD_Siddique_Ahmed_Resume.pdf"
+   class="hidden sm:inline-flex btn items-center gap-2 px-4 py-2 rounded-full grad-dark text-brand text-sm font-medium shadow-sm">
+
+    Resume
+
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2.5">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+
+</a>
+        <button id="menuBtn" class="lg:hidden w-10 h-10 rounded-lg glass flex items-center justify-center" aria-label="Open menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="mobileMenu" class="lg:hidden hidden glass-nav border-t border-line">
+    <div class="px-5 py-4 flex flex-col gap-1 text-sm">
+      <a href="#home" class="mlink px-3 py-2.5 rounded-lg hover:bg-brand/40">Home</a>
+      <a href="#about" class="mlink px-3 py-2.5 rounded-lg hover:bg-brand/40">About</a>
+      <a href="#experience" class="mlink px-3 py-2.5 rounded-lg hover:bg-brand/40">Experience</a>
+      <a href="#projects" class="mlink px-3 py-2.5 rounded-lg hover:bg-brand/40">Projects</a>
+      <a href="#skills" class="mlink px-3 py-2.5 rounded-lg hover:bg-brand/40">Skills</a>
+      <a href="#awards" class="mlink px-3 py-2.5 rounded-lg hover:bg-brand/40">Achievements</a>
+      <a href="#certs" class="mlink px-3 py-2.5 rounded-lg hover:bg-brand/40">Certifications</a>
+      <a href="#contact" class="mlink px-3 py-2.5 rounded-lg hover:bg-brand/40">Contact</a>
+     <a href="resume/MD SIDDIQUE AHMED S_.pdf"
+   download="MD_Siddique_Ahmed_Resume.pdf"
+   class="mlink px-3 py-2.5 rounded-lg grad-dark text-brand text-center mt-1">
+
+    Resume
+
+</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="home" class="relative pt-24 pb-10 sm:pt-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-8 sm:mb-10">
+      <p class="reveal text-xs sm:text-sm tracking-[0.25em] uppercase text-sub font-medium mb-4"> Salesforce Developer · IQVIA</p>
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05]">
+        <span class="lineUp"><span class="grad-text">Md. Siddique Ahmed</span></span>
+      </h1>
+      <p class="reveal mt-5 text-base sm:text-lg text-sub max-w-2xl mx-auto leading-relaxed">
+        Building enterprise healthcare CRM platforms on Salesforce — Apex, LWC, Copado CI/CD, and production-grade release engineering for global pharmaceutical organizations.
+      </p>
+    </div>
+
+  <div class="reveal-scale relative rounded-3xl overflow-hidden shadow-[0_40px_120px_-30px_rgba(17,24,39,.35)] border border-white/60 glass"
+     style="aspect-ratio:16/9; border-radius:24px;">
+
+    <video
+        id="introVideo"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        class="absolute inset-0 w-full h-full object-cover">
+
+        <source src="videos/intro-video.mp4" type="video/mp4">
+
+    </video>
+
+    <!-- Controls -->
+    <div class="absolute bottom-5 right-5 z-20 flex gap-3">
+
+        <!-- Play / Pause -->
+        <button id="playBtn"
+            onclick="togglePlay()"
+            class="bg-black/60 hover:bg-black/80 text-white px-4 py-2 rounded-full backdrop-blur-md transition-all duration-300">
+
+            ⏸ Pause
+
+        </button>
+
+        <!-- Mute / Unmute -->
+        <button id="muteBtn"
+            onclick="toggleMute()"
+            class="bg-black/60 hover:bg-black/80 text-white px-4 py-2 rounded-full backdrop-blur-md transition-all duration-300">
+
+            🔇 Unmute
+
+        </button>
+
+    </div>
+
+    <div class="absolute inset-0 ring-1 ring-inset ring-white/20 pointer-events-none"
+         style="border-radius:24px;"></div>
+
+</div>
+
+<script>
+
+const video = document.getElementById("introVideo");
+const muteBtn = document.getElementById("muteBtn");
+const playBtn = document.getElementById("playBtn");
+
+function toggleMute() {
+
+    video.muted = !video.muted;
+
+    muteBtn.innerHTML = video.muted
+        ? "🔇 Unmute"
+        : "🔊 Mute";
+
+}
+
+function togglePlay() {
+
+    if(video.paused){
+
+        video.play();
+        playBtn.innerHTML = "⏸ Pause";
+
+    }else{
+
+        video.pause();
+        playBtn.innerHTML = "▶ Play";
+
+    }
+
+}
+
+</script>
+
+    <div class="mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm text-sub">
+      <span class="px-3 py-1.5 rounded-full bg-card border border-line">Salesforce</span>
+      <span class="px-3 py-1.5 rounded-full bg-card border border-line">Apex · LWC</span>
+      <span class="px-3 py-1.5 rounded-full bg-card border border-line">Copado CI/CD</span>
+      <span class="px-3 py-1.5 rounded-full bg-card border border-line">Healthcare CRM</span>
+      <span class="px-3 py-1.5 rounded-full bg-card border border-line">IQVIA</span>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about" class="relative py-20 sm:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+      <div class="reveal-left lg:col-span-5">
+        <div class="relative">
+          <div class="absolute -inset-3 bg-brand/50 rounded-3xl blur-2xl opacity-70"></div>
+          <div class="relative rounded-3xl overflow-hidden border border-white shadow-[0_30px_80px_-30px_rgba(17,24,39,.3)]">
+            <img src="image.png"
+              alt="Md. Siddique Ahmed, Salesforce Development Engineer" class="w-full h-[460px] sm:h-[560px] object-cover" loading="lazy" />
+            <div class="absolute bottom-0 left-0 right-0 p-5 glass border-t border-line">
+              <p class="font-semibold text-ink">Md. Siddique Ahmed</p>
+              <p class="text-sm text-sub">Salesforce Development Engineer · IQVIA</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal-right lg:col-span-7">
+        <p class="text-xs tracking-[0.25em] uppercase text-sub font-medium mb-3">About</p>
+        <h2 class="text-3xl sm:text-5xl font-bold tracking-tight leading-tight mb-6">
+          Enterprise Salesforce engineering for <span class="grad-text">healthcare & life sciences.</span>
+        </h2>
+        <p class="text-sub leading-relaxed mb-5">
+          I'm a Salesforce Development Engineer at IQVIA with 6.3+ years of experience designing, building, and
+          supporting enterprise CRM platforms for global pharmaceutical organizations. My work spans Apex,
+          Lightning Web Components, Copado-driven CI/CD, release engineering, and production support —
+          ensuring platform stability, security, and automation at scale.
+        </p>
+        <p class="text-sub leading-relaxed mb-8">
+          I've contributed to healthcare CRM platforms supporting Pfizer, Roche, and Janssen across APAC,
+          EMEA, and LATAM — automating 1000+ user stories with a 98% deployment success rate and 95% client
+          satisfaction.
+        </p>
+
+        <div class="flex flex-wrap gap-2 mb-8">
+          <span class="px-3 py-1.5 rounded-full bg-brand/60 text-ink text-sm font-medium">6.3+ Years Experience</span>
+          <span class="px-3 py-1.5 rounded-full bg-card border border-line text-sm text-sub">Enterprise Salesforce</span>
+          <span class="px-3 py-1.5 rounded-full bg-card border border-line text-sm text-sub">Healthcare Technology</span>
+          <span class="px-3 py-1.5 rounded-full bg-card border border-line text-sm text-sub">IQVIA</span>
+          <span class="px-3 py-1.5 rounded-full bg-card border border-line text-sm text-sub">Production Support</span>
+          <span class="px-3 py-1.5 rounded-full bg-card border border-line text-sm text-sub">Release Engineering</span>
+          <span class="px-3 py-1.5 rounded-full bg-card border border-line text-sm text-sub">Cloud Technologies</span>
+          <span class="px-3 py-1.5 rounded-full bg-card border border-line text-sm text-sub">Global CRM</span>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <div class="counter glass rounded-2xl p-4 text-center" data-target="6.3" data-suffix="+" data-decimals="1">
+            <div class="text-3xl font-bold text-ink"><span class="val">0</span><span class="suffix"></span></div>
+            <div class="text-xs text-sub mt-1">Years Experience</div>
+          </div>
+          <div class="counter glass rounded-2xl p-4 text-center" data-target="4">
+            <div class="text-3xl font-bold text-ink"><span class="val">0</span></div>
+            <div class="text-xs text-sub mt-1">IQVIA Impact Awards</div>
+          </div>
+          <div class="counter glass rounded-2xl p-4 text-center" data-target="118" data-suffix="+">
+            <div class="text-3xl font-bold text-ink"><span class="val">0</span><span class="suffix"></span></div>
+            <div class="text-xs text-sub mt-1">Trailhead Badges</div>
+          </div>
+          <div class="counter glass rounded-2xl p-4 text-center" data-target="300" data-suffix="+">
+            <div class="text-3xl font-bold text-ink"><span class="val">0</span><span class="suffix"></span></div>
+            <div class="text-xs text-sub mt-1">Jira Work Items</div>
+          </div>
+          <div class="counter glass rounded-2xl p-4 text-center" data-target="1000" data-suffix="+">
+            <div class="text-3xl font-bold text-ink"><span class="val">0</span><span class="suffix"></span></div>
+            <div class="text-xs text-sub mt-1">User Stories Automated</div>
+          </div>
+          <div class="counter glass rounded-2xl p-4 text-center" data-target="98" data-suffix="%">
+            <div class="text-3xl font-bold text-ink"><span class="val">0</span><span class="suffix"></span></div>
+            <div class="text-xs text-sub mt-1">Deployment Success</div>
+          </div>
+          <div class="counter glass rounded-2xl p-4 text-center" data-target="95" data-suffix="%">
+            <div class="text-3xl font-bold text-ink"><span class="val">0</span><span class="suffix"></span></div>
+            <div class="text-xs text-sub mt-1">Client Satisfaction</div>
+          </div>
+          <div class="counter glass rounded-2xl p-4 text-center" data-target="11">
+            <div class="text-3xl font-bold text-ink"><span class="val">0</span></div>
+            <div class="text-xs text-sub mt-1">Certifications</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAREER TIMELINE -->
+<section id="experience" class="relative py-20 sm:py-28 bg-bg2">
+  <div class="max-w-5xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-14">
+      <p class="reveal text-xs tracking-[0.25em] uppercase text-sub font-medium mb-3">Career Journey</p>
+      <h2 class="reveal text-3xl sm:text-5xl font-bold tracking-tight grad-text">From Intern to Salesforce Developer</h2>
+    </div>
+
+    <div class="relative pl-8 sm:pl-10">
+      <div class="absolute left-[11px] sm:left-[13px] top-2 bottom-2 w-px bg-gradient-to-b from-brand via-brand to-transparent"></div>
+
+    
+
+        <div class="reveal-left relative">
+          <div class="absolute -left-[29px] sm:-left-[33px] top-1 tl-dot"></div>
+          <div class="glass rounded-2xl p-6">
+            <div class="flex items-start justify-between gap-4 flex-wrap">
+              <div><span class="text-xs font-medium text-sub">2020 Apr — 2020 Oct</span><h3 class="text-xl font-semibold mt-1">Intern</h3></div>
+              <div class="w-12 h-12 rounded-xl bg-brand/60 flex items-center justify-center font-bold text-ink text-sm">Intern</div>
+            </div>
+            <p class="text-sm text-sub mt-3 leading-relaxed">Owned test strategy for CRM modules, expanded into API and integration testing, and began scripting Salesforce validation workflows.</p>
+            <ul class="mt-3 space-y-1 text-sm text-sub"><li>· API & integration test coverage</li><li>· Salesforce regression suites</li></ul>
+          </div>
+        </div>
+
+        <div class="reveal-left relative">
+          <div class="absolute -left-[29px] sm:-left-[33px] top-1 tl-dot"></div>
+          <div class="glass rounded-2xl p-6">
+            <div class="flex items-start justify-between gap-4 flex-wrap">
+              <div><span class="text-xs font-medium text-sub">2020 — 2021</span><h3 class="text-xl font-semibold mt-1">QA Engineer</h3></div>
+              <div class="w-12 h-12 rounded-xl bg-brand/60 flex items-center justify-center font-bold text-ink text-sm">AP</div>
+            </div>
+            <p class="text-sm text-sub mt-3 leading-relaxed">Executed quality assurance activities across Salesforce and Healthcare CRM platforms supporting enterprise product
+releases and customer deployments.</p>
+            <ul class="mt-3 space-y-1 text-sm text-sub"><li>· Testing, LWC, SOQL/SOSL development</li><li>· REST/SOAP/Bulk API integrations</li></ul>
+          </div>
+        </div>
+
+        <div class="reveal-left relative">
+          <div class="absolute -left-[29px] sm:-left-[33px] top-1 tl-dot"></div>
+          <div class="glass rounded-2xl p-6">
+            <div class="flex items-start justify-between gap-4 flex-wrap">
+              <div><span class="text-xs font-medium text-sub">2021 — 2024</span><h3 class="text-xl font-semibold mt-1">QA Analyst</h3></div>
+              <div class="w-12 h-12 rounded-xl bg-brand/60 flex items-center justify-center font-bold text-ink text-sm">QA</div>
+            </div>
+            <p class="text-sm text-sub mt-3 leading-relaxed">Developed automation frameworks covering more than 1,000 user stories across Web and iPad OCE platforms,
+significantly reducing regression effort and accelerating release cycles.</p>
+            <ul class="mt-3 space-y-1 text-sm text-sub"><li>· Copado CI/CD pipeline setup</li><li>· OCE & deployments</li></ul>
+          </div>
+        </div>
+
+        <div class="reveal-left relative">
+          <div class="absolute -left-[29px] sm:-left-[33px] top-1 tl-dot"></div>
+          <div class="glass rounded-2xl p-6">
+            <div class="flex items-start justify-between gap-4 flex-wrap">
+              <div><span class="text-xs font-medium text-sub">2024 — 2025</span><h3 class="text-xl font-semibold mt-1">Software Development Engineer</h3></div>
+              <div class="w-12 h-12 rounded-xl bg-brand/60 flex items-center justify-center font-bold text-ink text-sm">SDE</div>
+            </div>
+            <p class="text-sm text-sub mt-3 leading-relaxed">Delivered Salesforce solutions for Roche, achieving 95% positive client feedback through high-quality execution and
+timely delivery.</p>
+            <ul class="mt-3 space-y-1 text-sm text-sub"><li>· APAC, EMEA, LATAM & CRM environments</li><li>· Jira</li></ul>
+          </div>
+        </div>
+
+        <div class="reveal-left relative">
+          <div class="absolute -left-[29px] sm:-left-[33px] top-1 tl-dot" style="background:#8cda33;"></div>
+          <div class="rounded-2xl p-6 bg-card border-2 border-brand shadow-[0_24px_60px_-25px_rgba(167,196,134,.6)]">
+            <div class="flex items-start justify-between gap-4 flex-wrap">
+              <div><span class="text-xs font-medium text-ok">2025 — Present</span><h3 class="text-xl font-semibold mt-1">Software Development Engineer I · IQVIA</h3></div>
+              <div class="w-12 h-12 rounded-xl grad-dark flex items-center justify-center font-bold text-brand text-sm">SDE</div>
+            </div>
+            <p class="text-sm text-sub mt-3 leading-relaxed">Investigated complex production defects across Apex Classes, Triggers, Lightning Web Components, Salesforce
+Flows, and third-party integrations, improving platform reliability and reducing recurring incidents.</p>
+            <ul class="mt-3 space-y-1 text-sm text-sub"><li>· 4× IQVIA Impact Awards</li><li>· 98% deployment success across global releases</li><li>· Trusted production escalation engineer</li></ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOBAL IMPACT -->
+<section class="relative py-20 sm:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-12">
+      <p class="reveal text-xs tracking-[0.25em] uppercase text-sub font-medium mb-3">Global Impact</p>
+      <h2 class="reveal text-3xl sm:text-5xl font-bold tracking-tight max-w-3xl mx-auto grad-text">Enterprise healthcare CRM, supporting pharmaceutical organizations worldwide.</h2>
+    </div>
+
+    <div class="reveal-scale relative rounded-3xl overflow-hidden glass p-6 sm:p-10">
+      <div class="relative w-full" style="aspect-ratio:2/1; max-height:520px;">
+        <svg viewBox="0 0 1000 500" class="absolute inset-0 w-full h-full opacity-[0.18]" preserveAspectRatio="xMidYMid meet">
+          <path fill="#a7c486" d="M150,180 q40,-30 110,-20 q60,10 90,40 q20,30 -10,60 q-40,30 -110,20 q-70,-10 -90,-40 q-20,-30 10,-60z"/>
+          <path fill="#a7c486" d="M470,150 q60,-20 150,0 q60,20 70,70 q10,50 -40,80 q-80,40 -160,10 q-70,-20 -80,-70 q-10,-50 60,-90z"/>
+          <path fill="#a7c486" d="M520,260 q40,-10 80,10 q30,20 20,60 q-20,40 -70,30 q-50,-10 -40,-60 q10,-30 10,-40z"/>
+          <path fill="#a7c486" d="M780,170 q40,-10 90,20 q40,30 30,80 q-20,40 -80,30 q-60,-10 -50,-60 q10,-40 10,-70z"/>
+          <path fill="#a7c486" d="M250,330 q30,-10 60,10 q20,20 10,50 q-20,30 -60,20 q-30,-10 -20,-50 q5,-20 10,-30z"/>
+        </svg>
+
+        <svg viewBox="0 0 1000 500" class="absolute inset-0 w-full h-full" preserveAspectRatio="none" style="pointer-events:none;">
+          <defs>
+            <linearGradient id="lg" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#a7c486" stop-opacity="0"/>
+              <stop offset="50%" stop-color="#a7c486" stop-opacity="0.7"/>
+              <stop offset="100%" stop-color="#a7c486" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M560,250 Q400,120 250,200" stroke="url(#lg)" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
+          <path d="M560,250 Q700,150 820,200" stroke="url(#lg)" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
+          <path d="M560,250 Q520,360 540,400" stroke="url(#lg)" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
+          <path d="M560,250 Q300,300 260,360" stroke="url(#lg)" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
+        </svg>
+
+        <div class="mapDot" style="left:55%; top:48%;"></div>
+        <div class="mapDot" style="left:25%; top:40%; animation-delay:.4s;"></div>
+        <div class="mapDot" style="left:82%; top:40%; animation-delay:.8s;"></div>
+        <div class="mapDot" style="left:54%; top:80%; animation-delay:1.2s;"></div>
+        <div class="mapDot" style="left:26%; top:72%; animation-delay:1.6s;"></div>
+
+        <div class="float-card hidden sm:block absolute left-[8%] top-[18%] glass rounded-2xl p-3 w-44 shadow-lg">
+          <p class="text-xs font-semibold text-ink">India · APAC</p>
+          <p class="text-[11px] text-sub mt-1">Primary delivery hub for global CRM engineering.</p>
+        </div>
+        <div class="float-card hidden sm:block absolute right-[6%] top-[30%] glass rounded-2xl p-3 w-44 shadow-lg" style="animation-delay:1.5s;">
+          <p class="text-xs font-semibold text-ink">EMEA</p>
+          <p class="text-[11px] text-sub mt-1">Roche & Janssen platform support across regions.</p>
+        </div>
+        <div class="float-card hidden sm:block absolute left-[20%] bottom-[8%] glass rounded-2xl p-3 w-44 shadow-lg" style="animation-delay:2.2s;">
+          <p class="text-xs font-semibold text-ink">LATAM</p>
+          <p class="text-[11px] text-sub mt-1">Localized CRM rollouts & integrations.</p>
+        </div>
+      </div>
+
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <div class="glass rounded-2xl p-5 text-center w-60"><p class="text-2xl font-bold text-ink">Pfizer</p><p class="text-xs text-sub mt-1">Global pharmaceutical</p></div>
+        <div class="glass rounded-2xl p-5 text-center"><p class="text-2xl font-bold text-ink">Roche</p><p class="text-xs text-sub mt-1">Healthcare & diagnostics</p></div>
+        <div class="glass rounded-2xl p-5 text-center"><p class="text-2xl font-bold text-ink">Janssen</p><p class="text-xs text-sub mt-1">Pharmaceutical R&D</p></div>
+        <div class="glass rounded-2xl p-5 text-center"><p class="text-2xl font-bold text-ink">Iqvia OCE</p><p class="text-xs text-sub mt-1">Pharmaceutical R&D</p></div>
+      </div>
+      <p class="text-center text-sm text-sub mt-6 max-w-2xl mx-auto">Worked on enterprise healthcare CRM platforms supporting global pharmaceutical organizations across APAC, EMEA, and LATAM.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CURRENT PROJECT -->
+<section id="projects" class="relative py-20 sm:py-28 bg-bg2">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-12">
+      <p class="reveal text-xs tracking-[0.25em] uppercase text-sub font-medium mb-3">Currently Working On</p>
+      <h2 class="reveal text-3xl sm:text-5xl font-bold tracking-tight grad-text">Enterprise Salesforce CRM Platform</h2>
+      <p class="reveal text-sub mt-3">IQVIA · Healthcare & Life Sciences</p>
+    </div>
+
+    <div class="reveal-scale grid lg:grid-cols-12 gap-6 items-stretch">
+      <div class="lg:col-span-7 relative rounded-3xl overflow-hidden glass p-6 sm:p-8">
+        <div class="rounded-2xl bg-card border border-line p-5 shadow-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-brand"></span><span class="w-2.5 h-2.5 rounded-full bg-line"></span><span class="w-2.5 h-2.5 rounded-full bg-line"></span></div>
+            <span class="text-xs text-sub font-medium">IQVIA CRM · Production</span>
+          </div>
+          <div class="grid grid-cols-3 gap-3 mb-5">
+            <div class="rounded-xl bg-bg2 p-3"><p class="text-[10px] text-sub uppercase tracking-wide">Deployments</p><p class="text-xl font-bold mt-1">98%</p><div class="h-1.5 rounded-full bg-line mt-2 overflow-hidden"><div class="h-full bg-ok rounded-full" style="width:98%"></div></div></div>
+            <div class="rounded-xl bg-bg2 p-3"><p class="text-[10px] text-sub uppercase tracking-wide">Automated</p><p class="text-xl font-bold mt-1">1000+</p><div class="h-1.5 rounded-full bg-line mt-2 overflow-hidden"><div class="h-full bg-brand rounded-full" style="width:92%"></div></div></div>
+            <div class="rounded-xl bg-bg2 p-3"><p class="text-[10px] text-sub uppercase tracking-wide">Satisfaction</p><p class="text-xl font-bold mt-1">95%</p><div class="h-1.5 rounded-full bg-line mt-2 overflow-hidden"><div class="h-full bg-ok rounded-full" style="width:95%"></div></div></div>
+          </div>
+          <div class="rounded-xl bg-bg2 p-4">
+            <div class="flex items-end justify-between gap-1 h-28">
+              <div class="flex-1 rounded-t bg-brand/70" style="height:40%"></div>
+              <div class="flex-1 rounded-t bg-brand/70" style="height:65%"></div>
+              <div class="flex-1 rounded-t bg-brand/70" style="height:50%"></div>
+              <div class="flex-1 rounded-t bg-brand/70" style="height:80%"></div>
+              <div class="flex-1 rounded-t bg-brand/70" style="height:60%"></div>
+              <div class="flex-1 rounded-t bg-brand/70" style="height:90%"></div>
+              <div class="flex-1 rounded-t bg-brand/70" style="height:75%"></div>
+              <div class="flex-1 rounded-t bg-ok" style="height:100%"></div>
+            </div>
+            <p class="text-[10px] text-sub mt-2">Release throughput · last 8 sprints</p>
+          </div>
+        </div>
+
+        <div class="float-card absolute -right-2 top-10 glass rounded-xl px-3 py-2 shadow-lg text-xs font-medium hidden sm:block">Apex Trigger ✓</div>
+        <div class="float-card absolute -left-3 bottom-16 glass rounded-xl px-3 py-2 shadow-lg text-xs font-medium hidden sm:block" style="animation-delay:1.2s;">Copado Deploy ✓</div>
+        <div class="float-card absolute right-6 bottom-6 glass rounded-xl px-3 py-2 shadow-lg text-xs font-medium hidden sm:block" style="animation-delay:2s;">LWC Component ✓</div>
+      </div>
+
+      <div class="lg:col-span-5 rounded-3xl bg-card border border-line p-6 sm:p-8">
+        <h3 class="text-lg font-semibold mb-1">Tech & Focus Areas</h3>
+        <p class="text-sm text-sub mb-5">What I'm shipping day-to-day on the platform.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1.5 rounded-full bg-brand/50 text-sm font-medium">Apex</span>
+          <span class="px-3 py-1.5 rounded-full bg-brand/50 text-sm font-medium">Lightning Web Components</span>
+          <span class="px-3 py-1.5 rounded-full bg-brand/50 text-sm font-medium">Copado</span>
+          <span class="px-3 py-1.5 rounded-full bg-brand/50 text-sm font-medium">CI/CD</span>
+          <span class="px-3 py-1.5 rounded-full bg-brand/50 text-sm font-medium">Release Management</span>
+          <span class="px-3 py-1.5 rounded-full bg-brand/50 text-sm font-medium">Enterprise Integrations</span>
+          <span class="px-3 py-1.5 rounded-full bg-brand/50 text-sm font-medium">Production Support</span>
+          <span class="px-3 py-1.5 rounded-full bg-brand/50 text-sm font-medium">Platform Stability</span>
+          <span class="px-3 py-1.5 rounded-full bg-brand/50 text-sm font-medium">Security</span>
+          <span class="px-3 py-1.5 rounded-full bg-brand/50 text-sm font-medium">Automation</span>
+        </div>
+
+        <div class="mt-6 space-y-3">
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-bg2"><span class="w-8 h-8 rounded-lg bg-brand flex items-center justify-center text-ink text-xs font-bold">01</span><p class="text-sm text-sub">Designing scalable Apex & LWC features for global pharma CRM.</p></div>
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-bg2"><span class="w-8 h-8 rounded-lg bg-brand flex items-center justify-center text-ink text-xs font-bold">02</span><p class="text-sm text-sub">Owning Copado CI/CD pipelines and release engineering.</p></div>
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-bg2"><span class="w-8 h-8 rounded-lg bg-brand flex items-center justify-center text-ink text-xs font-bold">03</span><p class="text-sm text-sub">Production escalation, stability, and security hardening.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED SKILLS -->
+<section id="skills" class="relative py-20 sm:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-12">
+      <p class="reveal text-xs tracking-[0.25em] uppercase text-sub font-medium mb-3">Featured Skills</p>
+      <h2 class="reveal text-3xl sm:text-5xl font-bold tracking-tight grad-text">A full-stack Salesforce toolkit.</h2>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5"><div class="text-sm font-semibold text-ink mb-2">Salesforce Development</div><p class="text-xs text-sub">Apex · LWC · Aura · Visualforce</p></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5"><div class="text-sm font-semibold text-ink mb-2">Apex</div><p class="text-xs text-sub">Triggers · Batchable · Queueable</p></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5"><div class="text-sm font-semibold text-ink mb-2">Lightning Web Components</div><p class="text-xs text-sub">Reusable · Reactive · Performant</p></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5"><div class="text-sm font-semibold text-ink mb-2">Aura</div><p class="text-xs text-sub">Components · Events</p></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5"><div class="text-sm font-semibold text-ink mb-2">Visualforce</div><p class="text-xs text-sub">Pages · PDF rendering</p></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5"><div class="text-sm font-semibold text-ink mb-2">SOQL</div><p class="text-xs text-sub">Query optimization</p></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5"><div class="text-sm font-semibold text-ink mb-2">SOSL</div><p class="text-xs text-sub">Full-text search</p></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5"><div class="text-sm font-semibold text-ink mb-2">Sales Cloud</div><p class="text-xs text-sub">Automation · Workflows</p></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5"><div class="text-sm font-semibold text-ink mb-2">Service Cloud</div><p class="text-xs text-sub">Case · SLA · Omni</p></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5"><div class="text-sm font-semibold text-ink mb-2">REST API</div><p class="text-xs text-sub">Integrations · JSON</p></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5"><div class="text-sm font-semibold text-ink mb-2">SOAP API</div><p class="text-xs text-sub">Enterprise integrations</p></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5"><div class="text-sm font-semibold text-ink mb-2">Bulk API</div><p class="text-xs text-sub">Large data loads</p></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5"><div class="text-sm font-semibold text-ink mb-2">MuleSoft</div><p class="text-xs text-sub">Integration patterns</p></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5"><div class="text-sm font-semibold text-ink mb-2">Git · GitHub</div><p class="text-xs text-sub">Branching · PRs</p></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5"><div class="text-sm font-semibold text-ink mb-2">Azure</div><p class="text-xs text-sub">AZ-900 fundamentals</p></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5"><div class="text-sm font-semibold text-ink mb-2">VS Code</div><p class="text-xs text-sub">DX tooling</p></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5"><div class="text-sm font-semibold text-ink mb-2">Copado</div><p class="text-xs text-sub">CI/CD · Releases</p></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5"><div class="text-sm font-semibold text-ink mb-2">Jira</div><p class="text-xs text-sub">Agile · 300+ items</p></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5"><div class="text-sm font-semibold text-ink mb-2">ServiceNow</div><p class="text-xs text-sub">Incident · Change</p></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5"><div class="text-sm font-semibold text-ink mb-2">Workbench</div><p class="text-xs text-sub">Query · Data ops</p></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5"><div class="text-sm font-semibold text-ink mb-2">Javascript</div><p class="text-xs text-sub">Scripting · DOM Manipulation</p></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5"><div class="text-sm font-semibold text-ink mb-2">React.js</div><p class="text-xs text-sub">UI Development</p></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5"><div class="text-sm font-semibold text-ink mb-2">Node.js</div><p class="text-xs text-sub">Server-side Development</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS VISUALIZATION -->
+<section class="relative py-20 sm:py-28 bg-bg2">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-12">
+      <p class="reveal text-xs tracking-[0.25em] uppercase text-sub font-medium mb-3">Proficiency</p>
+      <h2 class="reveal text-3xl sm:text-5xl font-bold tracking-tight grad-text">Where I'm strongest.</h2>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div class="reveal-scale glass rounded-2xl p-6 flex flex-col items-center text-center"><div class="relative w-32 h-32"><svg class="ring w-full h-full" viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="#E5E7EB" stroke-width="8"/><circle class="prog" cx="60" cy="60" r="52" fill="none" stroke="#a7c486" stroke-width="8" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" data-pct="95"/></svg><div class="absolute inset-0 flex items-center justify-center text-2xl font-bold">95%</div></div><p class="mt-4 font-semibold">Salesforce</p></div>
+      <div class="reveal-scale glass rounded-2xl p-6 flex flex-col items-center text-center"><div class="relative w-32 h-32"><svg class="ring w-full h-full" viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="#E5E7EB" stroke-width="8"/><circle class="prog" cx="60" cy="60" r="52" fill="none" stroke="#a7c486" stroke-width="8" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" data-pct="92"/></svg><div class="absolute inset-0 flex items-center justify-center text-2xl font-bold">92%</div></div><p class="mt-4 font-semibold">LWC</p></div>
+      <div class="reveal-scale glass rounded-2xl p-6 flex flex-col items-center text-center"><div class="relative w-32 h-32"><svg class="ring w-full h-full" viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="#E5E7EB" stroke-width="8"/><circle class="prog" cx="60" cy="60" r="52" fill="none" stroke="#a7c486" stroke-width="8" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" data-pct="94"/></svg><div class="absolute inset-0 flex items-center justify-center text-2xl font-bold">94%</div></div><p class="mt-4 font-semibold">Apex</p></div>
+      <div class="reveal-scale glass rounded-2xl p-6 flex flex-col items-center text-center"><div class="relative w-32 h-32"><svg class="ring w-full h-full" viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="#E5E7EB" stroke-width="8"/><circle class="prog" cx="60" cy="60" r="52" fill="none" stroke="#a7c486" stroke-width="8" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" data-pct="96"/></svg><div class="absolute inset-0 flex items-center justify-center text-2xl font-bold">96%</div></div><p class="mt-4 font-semibold">Production Support</p></div>
+      <div class="reveal-scale glass rounded-2xl p-6 flex flex-col items-center text-center"><div class="relative w-32 h-32"><svg class="ring w-full h-full" viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="#E5E7EB" stroke-width="8"/><circle class="prog" cx="60" cy="60" r="52" fill="none" stroke="#a7c486" stroke-width="8" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" data-pct="93"/></svg><div class="absolute inset-0 flex items-center justify-center text-2xl font-bold">93%</div></div><p class="mt-4 font-semibold">Automation</p></div>
+      <div class="reveal-scale glass rounded-2xl p-6 flex flex-col items-center text-center"><div class="relative w-32 h-32"><svg class="ring w-full h-full" viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="#E5E7EB" stroke-width="8"/><circle class="prog" cx="60" cy="60" r="52" fill="none" stroke="#a7c486" stroke-width="8" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" data-pct="90"/></svg><div class="absolute inset-0 flex items-center justify-center text-2xl font-bold">90%</div></div><p class="mt-4 font-semibold">Copado</p></div>
+      <div class="reveal-scale glass rounded-2xl p-6 flex flex-col items-center text-center"><div class="relative w-32 h-32"><svg class="ring w-full h-full" viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="#E5E7EB" stroke-width="8"/><circle class="prog" cx="60" cy="60" r="52" fill="none" stroke="#a7c486" stroke-width="8" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" data-pct="95"/></svg><div class="absolute inset-0 flex items-center justify-center text-2xl font-bold">95%</div></div><p class="mt-4 font-semibold">Release Management</p></div>
+      <div class="reveal-scale glass rounded-2xl p-6 flex flex-col items-center text-center"><div class="relative w-32 h-32"><svg class="ring w-full h-full" viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="#E5E7EB" stroke-width="8"/><circle class="prog" cx="60" cy="60" r="52" fill="none" stroke="#a7c486" stroke-width="8" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" data-pct="97"/></svg><div class="absolute inset-0 flex items-center justify-center text-2xl font-bold">97%</div></div><p class="mt-4 font-semibold">CI/CD</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards" class="relative py-20 sm:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-12">
+      <p class="reveal text-xs tracking-[0.25em] uppercase text-sub font-medium mb-3">Awards & Recognition</p>
+      <h2 class="reveal text-3xl sm:text-5xl font-bold tracking-tight grad-text">Recognized for impact.</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-6"><div class="iconPop w-12 h-12 rounded-xl bg-brand/60 flex items-center justify-center mb-4"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2"><path d="M12 2l2.4 6.9H22l-5.8 4.2 2.2 7L12 16l-6.4 4.1 2.2-7L2 8.9h7.6z"/></svg></div><h3 class="font-semibold">4× IQVIA Impact Awards</h3><p class="text-sm text-sub mt-2">Recognized four times for measurable delivery impact on enterprise CRM platforms.</p></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-6"><div class="iconPop w-12 h-12 rounded-xl bg-brand/60 flex items-center justify-center mb-4"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div><h3 class="font-semibold">95% Client Feedback</h3><p class="text-sm text-sub mt-2">Consistent high-satisfaction ratings from stakeholders and global pharma clients.</p></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-6"><div class="iconPop w-12 h-12 rounded-xl bg-brand/60 flex items-center justify-center mb-4"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div><h3 class="font-semibold">98% Deployment Success</h3><p class="text-sm text-sub mt-2">Near-flawless release track record across global Salesforce deployments.</p></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-6"><div class="iconPop w-12 h-12 rounded-xl bg-brand/60 flex items-center justify-center mb-4"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3 class="font-semibold">Trusted Production Escalation Engineer</h3><p class="text-sm text-sub mt-2">Go-to engineer for critical production issues and rapid resolution.</p></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-6"><div class="iconPop w-12 h-12 rounded-xl bg-brand/60 flex items-center justify-center mb-4"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><h3 class="font-semibold">Automation Excellence</h3><p class="text-sm text-sub mt-2">1000+ user stories automated across release and testing pipelines.</p></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-6"><div class="iconPop w-12 h-12 rounded-xl bg-brand/60 flex items-center justify-center mb-4"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><h3 class="font-semibold">Townhall Recognition</h3><p class="text-sm text-sub mt-2">Publicly recognized at IQVIA townhalls for platform delivery.</p></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-6"><div class="iconPop w-12 h-12 rounded-xl bg-brand/60 flex items-center justify-center mb-4"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg></div><h3 class="font-semibold">Platform Stability Excellence</h3><p class="text-sm text-sub mt-2">Maintained high uptime and stability for global healthcare CRM.</p></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-6"><div class="iconPop w-12 h-12 rounded-xl bg-brand/60 flex items-center justify-center mb-4"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2"><path d="M12 15l-2 5 9-9-9-9 2 5-7 4z"/></svg></div><h3 class="font-semibold">Release Engineering Leadership</h3><p class="text-sm text-sub mt-2">Led Copado-driven CI/CD and release governance across teams.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certs" class="relative py-20 sm:py-28 bg-bg2">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-12">
+      <p class="reveal text-xs tracking-[0.25em] uppercase text-sub font-medium mb-3">Certifications Wall</p>
+      <h2 class="reveal text-3xl sm:text-5xl font-bold tracking-tight grad-text">Verified, certified, and always learning.</h2>
+      <p class="reveal text-sm text-sub mt-3">11 industry-recognized credentials across Salesforce, Copado, Azure, IBM & Oracle.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <!-- Salesforce Platform Developer I -->
+      <div class="certCard reveal rounded-2xl bg-card border border-line p-6 flex items-center gap-4">
+        <div class="logoBadge w-16 h-16 rounded-2xl flex items-center justify-center shrink-0" style="background:rgba(0,161,224,.12);">
+          <svg viewBox="0 0 24 24" class="w-9 h-9" fill="#00A1E0"><path d="M9.5 5C6.5 5 4 7.5 4 10.5c0 .3 0 .6.1.9C2.8 12 2 13.2 2 14.6 2 16.8 3.8 18.6 6 18.6h9c2.8 0 5-2.2 5-5 0-2.6-1.9-4.7-4.4-5C15 6.4 12.5 5 9.5 5z"/></svg>
+        </div>
+        <div class="min-w-0">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-[10px] font-semibold uppercase tracking-wide" style="color:#00A1E0;">Salesforce</span>
+            <span class="inline-flex items-center gap-0.5 text-[10px] text-ok font-medium"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Verified</span>
+          </div>
+          <h3 class="font-semibold text-ink leading-tight">Platform Developer I</h3>
+          <p class="text-xs text-sub mt-1">Apex & LWC development certification</p>
+        </div>
+      </div>
+
+      <!-- Salesforce Administrator -->
+      <div class="certCard reveal rounded-2xl bg-card border border-line p-6 flex items-center gap-4">
+        <div class="logoBadge w-16 h-16 rounded-2xl flex items-center justify-center shrink-0" style="background:rgba(0,161,224,.12);">
+          <svg viewBox="0 0 24 24" class="w-9 h-9" fill="#00A1E0"><path d="M9.5 5C6.5 5 4 7.5 4 10.5c0 .3 0 .6.1.9C2.8 12 2 13.2 2 14.6 2 16.8 3.8 18.6 6 18.6h9c2.8 0 5-2.2 5-5 0-2.6-1.9-4.7-4.4-5C15 6.4 12.5 5 9.5 5z"/></svg>
+        </div>
+        <div class="min-w-0">
+          <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-semibold uppercase tracking-wide" style="color:#00A1E0;">Salesforce</span><span class="inline-flex items-center gap-0.5 text-[10px] text-ok font-medium"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Verified</span></div>
+          <h3 class="font-semibold text-ink leading-tight">Salesforce Administrator</h3>
+          <p class="text-xs text-sub mt-1">Core admin & configuration</p>
+        </div>
+      </div>
+
+      <!-- Platform App Builder -->
+      <div class="certCard reveal rounded-2xl bg-card border border-line p-6 flex items-center gap-4">
+        <div class="logoBadge w-16 h-16 rounded-2xl flex items-center justify-center shrink-0" style="background:rgba(0,161,224,.12);">
+          <svg viewBox="0 0 24 24" class="w-9 h-9" fill="#00A1E0"><path d="M9.5 5C6.5 5 4 7.5 4 10.5c0 .3 0 .6.1.9C2.8 12 2 13.2 2 14.6 2 16.8 3.8 18.6 6 18.6h9c2.8 0 5-2.2 5-5 0-2.6-1.9-4.7-4.4-5C15 6.4 12.5 5 9.5 5z"/></svg>
+        </div>
+        <div class="min-w-0">
+          <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-semibold uppercase tracking-wide" style="color:#00A1E0;">Salesforce</span><span class="inline-flex items-center gap-0.5 text-[10px] text-ok font-medium"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Verified</span></div>
+          <h3 class="font-semibold text-ink leading-tight">Platform App Builder</h3>
+          <p class="text-xs text-sub mt-1">Declarative app development</p>
+        </div>
+      </div>
+
+      <!-- Copado Fundamentals I -->
+      <div class="certCard reveal rounded-2xl bg-card border border-line p-6 flex items-center gap-4">
+        <div class="logoBadge w-16 h-16 rounded-2xl flex items-center justify-center shrink-0" style="background:rgba(26,160,253,.12);">
+          <svg viewBox="0 0 24 24" class="w-9 h-9"><path fill="#1AA0FD" d="M12 2 21 7v10l-9 5L3 17V7l9-5z"/><text x="12" y="16" text-anchor="middle" font-size="9" font-weight="800" font-family="Inter,sans-serif" fill="#fff">C</text></svg>
+        </div>
+        <div class="min-w-0">
+          <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-semibold uppercase tracking-wide" style="color:#1AA0FD;">Copado</span><span class="inline-flex items-center gap-0.5 text-[10px] text-ok font-medium"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Verified</span></div>
+          <h3 class="font-semibold text-ink leading-tight">Copado Fundamentals I</h3>
+          <p class="text-xs text-sub mt-1">CI/CD foundations on Copado</p>
+        </div>
+      </div>
+
+      <!-- Copado Fundamentals II -->
+      <div class="certCard reveal rounded-2xl bg-card border border-line p-6 flex items-center gap-4">
+        <div class="logoBadge w-16 h-16 rounded-2xl flex items-center justify-center shrink-0" style="background:rgba(26,160,253,.12);">
+          <svg viewBox="0 0 24 24" class="w-9 h-9"><path fill="#1AA0FD" d="M12 2 21 7v10l-9 5L3 17V7l9-5z"/><text x="12" y="16" text-anchor="middle" font-size="9" font-weight="800" font-family="Inter,sans-serif" fill="#fff">C</text></svg>
+        </div>
+        <div class="min-w-0">
+          <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-semibold uppercase tracking-wide" style="color:#1AA0FD;">Copado</span><span class="inline-flex items-center gap-0.5 text-[10px] text-ok font-medium"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Verified</span></div>
+          <h3 class="font-semibold text-ink leading-tight">Copado Fundamentals II</h3>
+          <p class="text-xs text-sub mt-1">Advanced release management</p>
+        </div>
+      </div>
+
+      <!-- Copado AI Specialist -->
+      <div class="certCard reveal rounded-2xl bg-card border border-line p-6 flex items-center gap-4">
+        <div class="logoBadge w-16 h-16 rounded-2xl flex items-center justify-center shrink-0" style="background:rgba(26,160,253,.12);">
+          <svg viewBox="0 0 24 24" class="w-9 h-9"><path fill="#1AA0FD" d="M12 2 21 7v10l-9 5L3 17V7l9-5z"/><text x="12" y="16" text-anchor="middle" font-size="9" font-weight="800" font-family="Inter,sans-serif" fill="#fff">C</text></svg>
+        </div>
+        <div class="min-w-0">
+          <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-semibold uppercase tracking-wide" style="color:#1AA0FD;">Copado</span><span class="inline-flex items-center gap-0.5 text-[10px] text-ok font-medium"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Verified</span></div>
+          <h3 class="font-semibold text-ink leading-tight">Copado AI Specialist</h3>
+          <p class="text-xs text-sub mt-1">AI-driven DevOps on Copado</p>
+        </div>
+      </div>
+
+      <!-- Copado Robotic Testing -->
+      <div class="certCard reveal rounded-2xl bg-card border border-line p-6 flex items-center gap-4">
+        <div class="logoBadge w-16 h-16 rounded-2xl flex items-center justify-center shrink-0" style="background:rgba(26,160,253,.12);">
+          <svg viewBox="0 0 24 24" class="w-9 h-9"><path fill="#1AA0FD" d="M12 2 21 7v10l-9 5L3 17V7l9-5z"/><text x="12" y="16" text-anchor="middle" font-size="9" font-weight="800" font-family="Inter,sans-serif" fill="#fff">C</text></svg>
+        </div>
+        <div class="min-w-0">
+          <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-semibold uppercase tracking-wide" style="color:#1AA0FD;">Copado</span><span class="inline-flex items-center gap-0.5 text-[10px] text-ok font-medium"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Verified</span></div>
+          <h3 class="font-semibold text-ink leading-tight">Copado Robotic Testing</h3>
+          <p class="text-xs text-sub mt-1">Automated UI & regression testing</p>
+        </div>
+      </div>
+
+      <!-- Azure AZ-900 -->
+      <div class="certCard reveal rounded-2xl bg-card border border-line p-6 flex items-center gap-4">
+        <div class="logoBadge w-16 h-16 rounded-2xl flex items-center justify-center shrink-0" style="background:rgba(0,120,212,.12);">
+          <svg viewBox="0 0 24 24" class="w-9 h-9" fill="#0078D4"><path d="M11 4 2 20h9V4zm2 0v16h9L13 4z"/></svg>
+        </div>
+        <div class="min-w-0">
+          <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-semibold uppercase tracking-wide" style="color:#0078D4;">Microsoft Azure</span><span class="inline-flex items-center gap-0.5 text-[10px] text-ok font-medium"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Verified</span></div>
+          <h3 class="font-semibold text-ink leading-tight">Azure AZ-900</h3>
+          <p class="text-xs text-sub mt-1">Microsoft Azure fundamentals</p>
+        </div>
+      </div>
+
+      <!-- IBM Hadoop -->
+      <div class="certCard reveal rounded-2xl bg-card border border-line p-6 flex items-center gap-4">
+        <div class="logoBadge w-16 h-16 rounded-2xl flex items-center justify-center shrink-0" style="background:rgba(15,98,254,.10);">
+          <svg viewBox="0 0 64 28" class="w-11 h-7"><g fill="#0F62FE"><rect x="0" y="2" width="64" height="3"/><rect x="0" y="8" width="64" height="2"/><rect x="0" y="12" width="64" height="3"/><rect x="0" y="18" width="64" height="2"/><rect x="0" y="22" width="64" height="3"/></g><g fill="#F8FAF7"><rect x="0" y="5" width="64" height="3"/><rect x="0" y="10" width="64" height="2"/><rect x="0" y="15" width="64" height="3"/><rect x="0" y="20" width="64" height="2"/></g></svg>
+        </div>
+        <div class="min-w-0">
+          <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-semibold uppercase tracking-wide" style="color:#0F62FE;">IBM</span><span class="inline-flex items-center gap-0.5 text-[10px] text-ok font-medium"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Verified</span></div>
+          <h3 class="font-semibold text-ink leading-tight">IBM Hadoop</h3>
+          <p class="text-xs text-sub mt-1">Big data fundamentals</p>
+        </div>
+      </div>
+
+      <!-- OCE Personal Administrator -->
+      <div class="certCard reveal rounded-2xl bg-card border border-line p-6 flex items-center gap-4">
+        <div class="logoBadge w-16 h-16 rounded-2xl flex items-center justify-center shrink-0" style="background:rgba(199,70,52,.10);">
+          <svg viewBox="0 0 64 24" class="w-12 h-6"><rect x="1" y="1" width="62" height="22" rx="11" fill="#C74634"/><text x="32" y="16" text-anchor="middle" font-size="8" font-weight="700" font-family="Inter,sans-serif" fill="#fff">ORACLE</text></svg>
+        </div>
+        <div class="min-w-0">
+          <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-semibold uppercase tracking-wide" style="color:#C74634;">Oracle</span><span class="inline-flex items-center gap-0.5 text-[10px] text-ok font-medium"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Verified</span></div>
+          <h3 class="font-semibold text-ink leading-tight">OCE Personal Administrator</h3>
+          <p class="text-xs text-sub mt-1">Oracle CX administration</p>
+        </div>
+      </div>
+
+      <!-- OCE One-Key Integration -->
+      <div class="certCard reveal rounded-2xl bg-card border border-line p-6 flex items-center gap-4">
+        <div class="logoBadge w-16 h-16 rounded-2xl flex items-center justify-center shrink-0" style="background:rgba(199,70,52,.10);">
+          <svg viewBox="0 0 64 24" class="w-12 h-6"><rect x="1" y="1" width="62" height="22" rx="11" fill="#C74634"/><text x="32" y="16" text-anchor="middle" font-size="8" font-weight="700" font-family="Inter,sans-serif" fill="#fff">ORACLE</text></svg>
+        </div>
+        <div class="min-w-0">
+          <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-semibold uppercase tracking-wide" style="color:#C74634;">Oracle</span><span class="inline-flex items-center gap-0.5 text-[10px] text-ok font-medium"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Verified</span></div>
+          <h3 class="font-semibold text-ink leading-tight">OCE One-Key Integration</h3>
+          <p class="text-xs text-sub mt-1">Single sign-on integration</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section class="relative py-20 sm:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-12">
+      <p class="reveal text-xs tracking-[0.25em] uppercase text-sub font-medium mb-3">Tech Stack</p>
+      <h2 class="reveal text-3xl sm:text-5xl font-bold tracking-tight grad-text">Tools I build with daily.</h2>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5 flex items-center gap-3"><div class="iconPop w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:rgba(0,161,224,.12);"><svg viewBox="0 0 24 24" class="w-6 h-6" fill="#00A1E0"><path d="M9.5 5C6.5 5 4 7.5 4 10.5c0 .3 0 .6.1.9C2.8 12 2 13.2 2 14.6 2 16.8 3.8 18.6 6 18.6h9c2.8 0 5-2.2 5-5 0-2.6-1.9-4.7-4.4-5C15 6.4 12.5 5 9.5 5z"/></svg></div><div class="font-semibold text-sm">Salesforce</div></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5 flex items-center gap-3"><div class="iconPop w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:rgba(0,161,224,.12);"><svg viewBox="0 0 24 24" class="w-6 h-6" fill="#00A1E0"><path d="M9.5 5C6.5 5 4 7.5 4 10.5c0 .3 0 .6.1.9C2.8 12 2 13.2 2 14.6 2 16.8 3.8 18.6 6 18.6h9c2.8 0 5-2.2 5-5 0-2.6-1.9-4.7-4.4-5C15 6.4 12.5 5 9.5 5z"/></svg></div><div class="font-semibold text-sm">LWC</div></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5 flex items-center gap-3"><div class="iconPop w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:rgba(0,161,224,.12);"><svg viewBox="0 0 24 24" class="w-6 h-6" fill="#00A1E0"><path d="M9.5 5C6.5 5 4 7.5 4 10.5c0 .3 0 .6.1.9C2.8 12 2 13.2 2 14.6 2 16.8 3.8 18.6 6 18.6h9c2.8 0 5-2.2 5-5 0-2.6-1.9-4.7-4.4-5C15 6.4 12.5 5 9.5 5z"/></svg></div><div class="font-semibold text-sm">Apex</div></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5 flex items-center gap-3"><div class="iconPop w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:rgba(247,223,30,.14);"><span class="font-bold text-sm" style="color:#E6B91E;">JS</span></div><div class="font-semibold text-sm">JavaScript</div></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5 flex items-center gap-3"><div class="iconPop w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:rgba(240,80,50,.12);"><svg viewBox="0 0 24 24" class="w-6 h-6" fill="#F05032"><path d="M23.5 9.5 12 2 .5 9.5 12 17l11.5-7.5zM12 19l-7-4.6L12 17l7-2.6L12 19zm0 0-7-4.6V14l7 4 7-4v-.6L12 19z"/></svg></div><div class="font-semibold text-sm">Git</div></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5 flex items-center gap-3"><div class="iconPop w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:rgba(0,120,212,.12);"><svg viewBox="0 0 24 24" class="w-6 h-6" fill="#0078D4"><path d="M11 4 2 20h9V4zm2 0v16h9L13 4z"/></svg></div><div class="font-semibold text-sm">Azure</div></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5 flex items-center gap-3"><div class="iconPop w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:rgba(26,160,253,.12);"><svg viewBox="0 0 24 24" class="w-6 h-6"><path fill="#1AA0FD" d="M12 2 21 7v10l-9 5L3 17V7l9-5z"/><text x="12" y="16" text-anchor="middle" font-size="9" font-weight="800" font-family="Inter,sans-serif" fill="#fff">C</text></svg></div><div class="font-semibold text-sm">Copado</div></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5 flex items-center gap-3"><div class="iconPop w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:rgba(107,114,128,.12);"><span class="font-bold text-xs" style="color:#6B7280;">REST</span></div><div class="font-semibold text-sm">REST</div></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5 flex items-center gap-3"><div class="iconPop w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:rgba(107,114,128,.12);"><span class="font-bold text-xs" style="color:#6B7280;">SOAP</span></div><div class="font-semibold text-sm">SOAP</div></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5 flex items-center gap-3"><div class="iconPop w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:rgba(37,99,235,.12);"><svg viewBox="0 0 24 24" class="w-6 h-6" fill="#2563EB"><path d="M17 3 7 13l-3-3-2 2 5 5 12-12z"/></svg></div><div class="font-semibold text-sm">VS Code</div></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5 flex items-center gap-3"><div class="iconPop w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:rgba(0,176,208,.12);"><span class="font-bold text-[10px]" style="color:#00B0D0;">MULE</span></div><div class="font-semibold text-sm">MuleSoft</div></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5 flex items-center gap-3"><div class="iconPop w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:rgba(38,132,255,.12);"><span class="font-bold text-sm" style="color:#2684FF;">J</span></div><div class="font-semibold text-sm">Jira</div></div>
+      <div class="skillCard reveal rounded-2xl bg-card border border-line p-5 flex items-center gap-3"><div class="iconPop w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:rgba(37,140,0,.12);"><span class="font-bold text-[10px]" style="color:#298C00;">SN</span></div><div class="font-semibold text-sm">ServiceNow</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="relative py-20 sm:py-28 bg-bg2">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-12">
+      <p class="reveal text-xs tracking-[0.25em] uppercase text-sub font-medium mb-3">Recommendations</p>
+      <h2 class="reveal text-3xl sm:text-5xl font-bold tracking-tight grad-text">What collaborators say.</h2>
+      <!-- <p class="reveal text-sm text-sub mt-3">Placeholder recommendations — easily editable later.</p> -->
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="reveal glass rounded-2xl p-6"><div class="flex items-center gap-3 mb-4"><div class="w-11 h-11 rounded-full bg-brand flex items-center justify-center font-semibold text-ink">S.H.</div><div><p class="font-semibold text-sm">Michael Green</p><p class="text-xs text-sub">Stakeholder · IQVIA</p></div></div><p class="text-sm text-sub leading-relaxed">"Siddique is one of the most reliable engineers on our CRM platform. His ownership of release engineering and production support kept our global deployments smooth and predictable."</p></div>
+      <div class="reveal glass rounded-2xl p-6"><div class="flex items-center gap-3 mb-4"><div class="w-11 h-11 rounded-full bg-brand flex items-center justify-center font-semibold text-ink">L.T.</div><div><p class="font-semibold text-sm">L. Tech Lead</p><p class="text-xs text-sub">Tech Lead · IQVIA</p></div></div><p class="text-sm text-sub leading-relaxed">"Strong Apex and LWC skills, plus a deep understanding of Copado CI/CD. Siddique elevated our automation and reduced release risk significantly."</p></div>
+      <div class="reveal glass rounded-2xl p-6"><div class="flex items-center gap-3 mb-4"><div class="w-11 h-11 rounded-full bg-brand flex items-center justify-center font-semibold text-ink">P.O.</div><div><p class="font-semibold text-sm">P. Owner</p><p class="text-xs text-sub">Product Owner · Healthcare CRM</p></div></div><p class="text-sm text-sub leading-relaxed">"Translates complex pharma requirements into clean Salesforce solutions. Dependable, communicative, and consistently delivers on time."</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="appreciation" class="py-20 sm:py-28 bg-bg2">
+
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+        <div class="text-center mb-10">
+
+            <p class="text-xs tracking-[0.25em] uppercase text-sub font-medium mb-3">
+                Recognition
+            </p>
+
+            <h2 class="text-3xl sm:text-5xl font-bold grad-text">
+                Appreciation & Recognition
+            </h2>
+
+            <p class="text-sub mt-3 max-w-2xl mx-auto">
+                A collection of appreciation emails, client recognitions, and awards received throughout my professional journey.
+            </p>
+
+        </div>
+
+        <div class="flex flex-wrap justify-center items-center gap-5">
+
+            <!-- Appreciation Emails -->
+            <a href="emails.html"
+               class="inline-flex items-center gap-3 px-6 py-4 rounded-xl bg-brand text-[#111827] font-semibold hover:scale-105 transition shadow-lg">
+
+                <!-- icon -->
+
+                <svg width="20" height="20" viewBox="0 0 24 24"
+                     fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16v16H4z"/>
+                    <path d="M22 6l-10 7L2 6"/>
+                </svg>
+
+                View Appreciation Emails
+
+            </a>
+
+            <!-- Awards -->
+            <a href="awards.html"
+               class="inline-flex items-center gap-3 px-6 py-4 rounded-xl border border-line bg-card hover:bg-brand/40 transition shadow-lg">
+
+                <svg width="20" height="20"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2">
+
+                    <circle cx="12" cy="8" r="6"/>
+                    <path d="M8 14l-2 8 6-3 6 3-2-8"/>
+
+                </svg>
+
+                View Awards
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- RESUME -->
+<section id="resume" class="relative py-20 sm:py-28">
+  <div class="max-w-5xl mx-auto px-5 sm:px-8">
+    <div class="reveal-scale rounded-3xl bg-card border border-line p-8 sm:p-12 shadow-[0_30px_80px_-40px_rgba(17,24,39,.3)]">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-8">
+        <div>
+          <p class="text-xs tracking-[0.25em] uppercase text-sub font-medium mb-2">Resume</p>
+          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight grad-text">Let's connect.</h2>
+          <p class="text-sub mt-2">Download my resume or reach out directly.</p>
+          <div class="mt-8 flex flex-wrap gap-4">
+
+  <!-- View Resume -->
+  <a href="resume/MD SIDDIQUE AHMED S_.pdf"
+     target="_blank"
+     class="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-brand text-[#111827] font-semibold hover:scale-105 transition duration-300 shadow-lg">
+
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2">
+      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/>
+      <circle cx="12" cy="12" r="3"/>
+    </svg>
+
+    Preview Resume
+
+  </a>
+
+  <!-- Download Resume -->
+  <a href="resume\MD SIDDIQUE AHMED S_.pdf"
+     download="resume\MD SIDDIQUE AHMED S_.pdf"
+     class="inline-flex items-center gap-3 px-6 py-3 rounded-xl border border-line bg-bg2 hover:bg-brand/40 transition duration-300 font-semibold">
+
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2">
+      <path d="M12 3v12"/>
+      <path d="M8 11l4 4 4-4"/>
+      <path d="M4 21h16"/>
+    </svg>
+
+    Download Resume
+
+  
+
+  </a>
+
+</div>
+        </div>
+        <div class="w-16 h-16 rounded-2xl bg-brand flex items-center justify-center shrink-0"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></div>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+       <a href="resume/MD SIDDIQUE AHMED S_.pdf"
+   download="MD_Siddique_Ahmed_Resume.pdf"
+   class="btn flex flex-col items-center gap-2 p-4 rounded-2xl grad-dark text-brand hover:opacity-90">
+
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <path d="M7 10l5 5 5-5"/>
+        <path d="M12 15V3"/>
+    </svg>
+
+    <span class="text-xs font-medium">Download Resume</span>
+
+</a>
+        <a href="https://www.linkedin.com/in/mahmeds33/" target="_blank" rel="noopener" class="btn flex flex-col items-center gap-2 p-4 rounded-2xl bg-bg2 border border-line hover:bg-brand/40">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
+          <span class="text-xs font-medium">LinkedIn</span>
+        </a>
+        <a href="https://www.salesforce.com/trailblazer/siddiqueahmed33" target="_blank" rel="noopener" class="btn flex flex-col items-center gap-2 p-4 rounded-2xl bg-bg2 border border-line hover:bg-brand/40">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+          <span class="text-xs font-medium">Trailhead</span>
+        </a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mdsiddiqueahmed.33@gmail.com"
+   target="_blank"
+   class="btn flex flex-col items-center gap-2 p-4 rounded-2xl bg-bg2 border border-line hover:bg-brand/40">
+
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2">
+    <path d="M4 4h16v16H4z"/>
+    <path d="m22 6-10 7L2 6"/>
+  </svg>
+
+  <span class="text-xs font-medium">Email</span>
+<a href="https://wa.me/917026002853?text=Hi%20Siddique,%20I%20came%20across%20your%20portfolio%20and%20would%20like%20to%20connect."
+   target="_blank"
+   class="btn flex flex-col items-center gap-2 p-4 rounded-2xl bg-bg2 border border-line hover:bg-brand/40">
+
+    <!-- Your SVG -->
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>
+    </svg>
+
+    <span class="text-xs font-medium">WhatsApp</span>
+
+</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- FOOTER -->
+<footer class="relative py-10 border-t border-line">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-2">
+      <span class="w-8 h-8 rounded-lg grad-dark flex items-center justify-center text-brand font-bold text-xs">SA</span>
+      <p class="text-sm text-sub">Made with <span class="text-ok">❤</span> by Md. Siddique Ahmed</p>
+    </div>
+    <p class="text-xs text-sub">© <span id="year"></span> · Salesforce Development Engineer · IQVIA</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const progress = document.getElementById('progress');
+  const onScroll = () => {
+    const h = document.documentElement;
+    progress.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+    if (window.scrollY > 30) document.getElementById('nav').classList.add('glass-nav');
+    else document.getElementById('nav').classList.remove('glass-nav');
+    let current = 'home';
+    document.querySelectorAll('section[id], header[id]').forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+    document.querySelectorAll('.navlink').forEach(l => {
+      l.classList.remove('bg-brand/50','text-ink','font-medium');
+      if (l.getAttribute('href') === '#' + current) l.classList.add('bg-brand/50','text-ink','font-medium');
+    });
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+  document.querySelectorAll('.mlink').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+  const glow = document.getElementById('cursorGlow');
+  window.addEventListener('mousemove', (e) => { glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px'; });
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-right, .lineUp').forEach(el => io.observe(el));
+
+  const cio = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target, target = parseFloat(el.dataset.target), decimals = parseInt(el.dataset.decimals || '0'), suffix = el.dataset.suffix || '';
+      const valEl = el.querySelector('.val'), sufEl = el.querySelector('.suffix');
+      if (sufEl) sufEl.textContent = suffix;
+      const dur = 1800, start = performance.now();
+      function tick(now){ const p = Math.min((now - start) / dur, 1), eased = 1 - Math.pow(1 - p, 3); valEl.textContent = (target * eased).toFixed(decimals); if (p < 1) requestAnimationFrame(tick); else valEl.textContent = target.toFixed(decimals); }
+      requestAnimationFrame(tick); cio.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.counter').forEach(c => cio.observe(c));
+
+  const rio = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const c = e.target.querySelector('.prog'), pct = parseFloat(c.dataset.pct), dash = 326.7;
+      c.style.strokeDashoffset = dash - (dash * pct / 100);
+      rio.unobserve(e.target);
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('.ring').forEach(r => rio.observe(r));
+
+  document.getElementById('contactForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const msg = document.getElementById('formMsg');
+    msg.classList.remove('hidden'); e.target.reset();
+    setTimeout(() => msg.classList.add('hidden'), 5000);
+  });
+
+  document.querySelectorAll('.btn').forEach(b => {
+    b.addEventListener('mousemove', (e) => {
+      const r = b.getBoundingClientRect();
+      b.style.transform = `translate(${(e.clientX - r.left - r.width/2)*0.12}px, ${(e.clientY - r.top - r.height/2)*0.12 - 2}px)`;
+    });
+    b.addEventListener('mouseleave', () => b.style.transform = '');
+  });
+</script>
+<script>
+
+const images = [
+"images/appreciation/email1.jpg",
+"images/appreciation/email2.jpg",
+"images/appreciation/email3.jpg",
+"images/appreciation/email4.jpg"
+];
+
+let current = 0;
+
+const modal = document.getElementById("galleryModal");
+const img = document.getElementById("galleryImage");
+
+// Open Gallery
+const openGallery = document.getElementById("openGallery");
+
+if (openGallery) {
+    openGallery.addEventListener("click", () => {
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        img.src = images[current];
+    });
+}
+
+// Close Gallery
+const closeGallery = document.getElementById("closeGallery");
+
+if (closeGallery) {
+    closeGallery.addEventListener("click", () => {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+    });
+}
+
+// Next Image
+const nextImage = document.getElementById("nextImage");
+
+if (nextImage) {
+    nextImage.addEventListener("click", () => {
+        current = (current + 1) % images.length;
+
+        img.style.opacity = 0;
+
+        setTimeout(() => {
+            img.src = images[current];
+            img.style.opacity = 1;
+        }, 150);
+    });
+}
+
+// Previous Image
+const prevImage = document.getElementById("prevImage");
+
+if (prevImage) {
+    prevImage.addEventListener("click", () => {
+        current = (current - 1 + images.length) % images.length;
+
+        img.style.opacity = 0;
+
+        setTimeout(() => {
+            img.src = images[current];
+            img.style.opacity = 1;
+        }, 150);
+    });
+}
+
+document.addEventListener("keydown",(e)=>{
+
+if(modal.classList.contains("hidden")) return;
+
+if(e.key==="ArrowRight")
+document.getElementById("nextImage").click();
+
+if(e.key==="ArrowLeft")
+document.getElementById("prevImage").click();
+
+if(e.key==="Escape")
+document.getElementById("closeGallery").click();
+
+});
+
+</script>
+
+<div id="galleryModal"
+class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50">
+
+    <button id="closeGallery"
+    class="absolute top-8 right-10 text-white text-5xl">
+        &times;
+    </button>
+
+    <button id="prevImage"
+    class="absolute left-8 text-white text-6xl">
+        &#10094;
+    </button>
+
+    <img
+    id="galleryImage"
+    src="images/appreciation/email1.jpg"
+    class="max-w-[85%] max-h-[85%] rounded-2xl shadow-2xl">
+
+    <button id="nextImage"
+    class="absolute right-8 text-white text-6xl">
+        &#10095;
+    </button>
+
+</div>
+
+<script>
+
+</script>
+</body>
+</html>

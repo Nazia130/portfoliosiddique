@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Awards | Md. Siddique Ahmed</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
+
+body{
+background:#F6F8F2;
+color:#111827;
+}
+
+header{
+background:#DBE4C6;
+padding:20px;
+text-align:center;
+box-shadow:0 2px 10px rgba(0,0,0,.1);
+}
+
+header h1{
+font-size:36px;
+}
+
+header p{
+margin-top:8px;
+color:#555;
+}
+
+.back{
+display:inline-block;
+margin:25px;
+text-decoration:none;
+background:#111827;
+color:white;
+padding:10px 18px;
+border-radius:8px;
+}
+
+.gallery{
+max-width:1200px;
+margin:auto;
+padding:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+transition:.3s;
+cursor:pointer;
+}
+
+.card:hover{
+transform:translateY(-6px);
+}
+
+.card img{
+width:100%;
+height:250px;
+object-fit:cover;
+}
+
+.card h3{
+padding:15px;
+font-size:20px;
+}
+
+.card p{
+padding:0 15px 20px;
+color:#666;
+}
+
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.8);
+justify-content:center;
+align-items:center;
+}
+
+.modal img{
+max-width:90%;
+max-height:90%;
+border-radius:12px;
+}
+
+.close{
+position:absolute;
+top:20px;
+right:35px;
+font-size:40px;
+color:white;
+cursor:pointer;
+}
+
+footer{
+text-align:center;
+padding:30px;
+margin-top:40px;
+color:#777;
+}
+
+</style>
+
+</head>
+<body>
+
+<header>
+<h1>🏆 Awards & Recognition</h1>
+<p>Achievements and milestones throughout my professional journey</p>
+</header>
+
+<a href="index.html" class="back">← Back to Portfolio</a>
+
+<div class="gallery">
+
+<div class="card">
+<img src="awards/award1.jpg" onclick="openImg(this.src)">
+<h3>IQVIA Impact Award</h3>
+<p>Recognized for exceptional delivery and business impact.</p>
+</div>
+
+<div class="card">
+<img src="awards/award2.jpg" onclick="openImg(this.src)">
+<h3>Delivery Excellence Award</h3>
+<p>For successful Salesforce project execution.</p>
+</div>
+
+
+
+</div>
+
+<div class="modal" id="modal">
+<span class="close" onclick="closeImg()">&times;</span>
+<img id="preview">
+</div>
+
+<footer>
+© 2026 Md. Siddique Ahmed
+</footer>
+
+<script>
+
+function openImg(src){
+document.getElementById("modal").style.display="flex";
+document.getElementById("preview").src=src;
+}
+
+function closeImg(){
+document.getElementById("modal").style.display="none";
+}
+
+window.onclick=function(e){
+if(e.target==document.getElementById("modal")){
+closeImg();
+}
+}
+
+</script>
+
+</body>
+</html>
